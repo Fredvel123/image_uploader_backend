@@ -11,5 +11,5 @@ GET http://localhost:8000/api/images HTTP/1.1
 access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYzlmNzdmYjQ5NWU3ODY0NjU5MDk1OCIsImlhdCI6MTY0MDY0MjE1MSwiZXhwIjoxNjQwNjQzOTUxfQ._EMmQDAPSSmunvr0CYC-MtTmTNdtUVGLiSnTKdXKmnI
 
 ### 
-DELETE http://localhost:8000/api/images/remove/61ca34bc8a5d4e97f5680c44 HTTP/1.1
+DELETE http://localhost:8000/api/images/remove HTTP/1.1
 access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYzlmNzdmYjQ5NWU3ODY0NjU5MDk1OCIsImlhdCI6MTY0MDY0MjE1MSwiZXhwIjoxNjQwNjQzOTUxfQ._EMmQDAPSSmunvr0CYC-MtTmTNdtUVGLiSnTKdXKmnI

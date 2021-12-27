@@ -51,7 +51,8 @@ const removeImageById = async (req, res) => {
     if(err) {
       res.json({message: "your token is not valid"})
     } else {
-        const images = await Images.findByIdAndDelete({_id: payload.id});
+        const {id} = req.params;
+        const images = await Images.findByIdAndDelete(id);
         res.json({
           isRemoved: true,
           message: "the image was removed"
