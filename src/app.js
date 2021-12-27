@@ -10,6 +10,10 @@ app.use(cors())
 app.set('port', process.env.PORT || PORT);
 
 // Routes
+// router users
+const usersRouters = require('./routers/usersRouters');
+app.use('/api', usersRouters);
+// router images 
 
 
 
@@ -17,5 +21,4 @@ app.set('port', process.env.PORT || PORT);
 app.get('/', (req, res) => {
   res.send("the server is online");
 })
-
 module.exports = app;

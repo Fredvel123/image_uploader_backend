@@ -1,0 +1,11 @@
+POST http://localhost:8000/api/signup HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "freddy",
+  "email": "freddy@gmail.com",
+  "password": "freddy",
+  "avatar": ""
+}
+###
+DELETE http://localhost:8000/api/remove/61c9e87ed5fe4445a44cd2a6 HTTP/1.1
