@@ -66,7 +66,7 @@ const getOwnUser = (req, res) => {
       if(err) {
         res.json({message: "your token is not valid"})
       } else {
-        const user = await Users.findOne({_id: payload.id}).select('-password').select('-_id');
+        const user = await Users.findOne({_id: payload.id}).select('-password');
         res.json(user)
       }
     });

@@ -9,12 +9,14 @@ app.use(cors())
 // settings project.
 app.set('port', process.env.PORT || PORT);
 
+
 // Routes
 // router users
 const usersRouters = require('./routers/usersRouters');
 app.use('/api', usersRouters);
 // router images 
-
+const imageRouters = require('./routers/imagesRouter');
+app.use('/api', imageRouters);
 
 
 // main url route
