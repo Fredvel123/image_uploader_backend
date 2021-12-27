@@ -1,11 +1,25 @@
-POST http://localhost:8000/api/signup HTTP/1.1
+POST http://localhost:8000/api/users/signup HTTP/1.1
 Content-Type: application/json
 
 {
-  "name": "freddy",
-  "email": "freddy@gmail.com",
-  "password": "freddy",
+  "name": "erick",
+  "email": "erick@gmail.com",
+  "password": "erick",
   "avatar": ""
 }
 ###
 DELETE http://localhost:8000/api/remove/61c9e87ed5fe4445a44cd2a6 HTTP/1.1
+###
+POST http://localhost:8000/api/users/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "erick@gmail.com",
+  "password": "erick"
+}
+### 
+GET http://localhost:8000/api/users HTTP/1.1
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYzllZDczN2QzMTQ4YmZlMGUzOTYxNiIsImlhdCI6MTY0MDYyNjgzMiwiZXhwIjoxNjQwNjI4NjMyfQ.wLS2FaKtFTKpEWeKT2tvHVY-liKfmqaFiJgNo926niU
+###
+GET http://localhost:8000/api/users/profile HTTP/1.1
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYzlmNzdmYjQ5NWU3ODY0NjU5MDk1OCIsImlhdCI6MTY0MDYyNzQ4NSwiZXhwIjoxNjQwNjI5Mjg1fQ.zlWulOcirFIxSlWQkqoBiNuu8e6lpO_eOlSxEyuBBr4

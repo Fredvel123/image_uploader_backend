@@ -3,8 +3,11 @@ const router = Router();
 const userCtl = require('../controllers/userCtl');
 
 router.get('/users', userCtl.getAllUsers);
-router.post('/signup', userCtl.createNewUser);
-router.delete('/remove/:id', userCtl.removeUserById)
+router.post('/users/signup', userCtl.createNewUser);
+router.post('/users/login', userCtl.logInUser);
+router.delete('/users/remove/:id', userCtl.removeUserById);
+
+router.get('/users/profile', userCtl.getOwnUser);
 
 
 module.exports = router;
