@@ -99,6 +99,11 @@ getAllUsers = async (req, res) => {
   } 
 }
 
+const getAllUserNoAuth = async (req, res) => {
+  const users = await Users.find();
+  res.json(users);  
+}
+
 const removeUserById = async (req, res) => {
   const {id} = req.params
   const user = await Users.findByIdAndDelete(id);
@@ -112,5 +117,6 @@ module.exports = {
   createNewUser, 
   logInUser,
   removeUserById, 
-  getOwnUser
+  getOwnUser,
+  getAllUserNoAuth
 }
