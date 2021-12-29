@@ -1,10 +1,10 @@
-POST http://localhost:8000/api/users/signup HTTP/1.1
+POST https://image-uploader-freddy.herokuapp.com/api/users/signup HTTP/1.1
 Content-Type: application/json
 
 {
-  "name": "erick",
-  "email": "erick@gmail.com",
-  "password": "erick",
+  "name": "fernando",
+  "email": "fernando@gmail.com",
+  "password": "fernando",
   "avatar": ""
 }
 ###

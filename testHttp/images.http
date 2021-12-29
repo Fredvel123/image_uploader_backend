@@ -1,4 +1,4 @@
-POST http://localhost:8000/api/images/addimg HTTP/1.1
+POST https://image-uploader-freddy.herokuapp.com/api/images/addimg HTTP/1.1
 Content-Type: application/json
 access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYzlmNzdmYjQ5NWU3ODY0NjU5MDk1OCIsImlhdCI6MTY0MDY0MTcxMSwiZXhwIjoxNjQwNjQzNTExfQ._9RvXEYIcLz6Or91DGlQc7wWjAiEJuunf4kQWEDDLf8
 
