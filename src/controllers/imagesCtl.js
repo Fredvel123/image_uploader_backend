@@ -39,7 +39,14 @@ const yourImages = (req, res) => {
       })
     } else {
         const images = await Images.find({_id: payload.id});
-        res.json(images)
+        if(images) {
+          res.json(images);
+        } else {
+          res.json({
+            isLogged: true,
+            message: "you still don't have images added, you can images in the button bellow"
+          })
+        }
       }
     });
   } else {

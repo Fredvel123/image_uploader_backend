@@ -75,7 +75,7 @@ const getOwnUser = (req, res) => {
     });
   } else {
     res.json({
-      status: 404,
+      isLogged: false,
       message: "you don't have access here, you need a token"
     })
   }  
