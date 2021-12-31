@@ -118,11 +118,38 @@ const removeUserById = async (req, res) => {
   })
 } 
 
+// test to token
+const testToken = (req, res) => {
+  const _token = req.headers['access-token'];
+  if(_token) {
+    jwt.verify(_token, process.env.KEY_JWT, (err, payload) => {
+      if(err) {
+        res.json({
+          isLogged: false,
+          message: "your token is not valid"
+        })
+      } else {
+        res.json({
+          isLogged: true,
+          message: "your token is valid",
+          token: _token
+        })
+      }
+    })
+  } else {
+    res.json({
+      isLogged: false,
+      message: "your don't have access here, you need a token"
+    })
+  }
+}
+
 module.exports = {
   getAllUsers, 
   createNewUser, 
   logInUser,
   removeUserById, 
   getOwnUser,
-  getAllUserNoAuth
+  getAllUserNoAuth,
+  testToken
 }
