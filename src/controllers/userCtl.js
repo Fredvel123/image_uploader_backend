@@ -64,7 +64,10 @@ const getOwnUser = (req, res) => {
   if(token) {
     jwt.verify(token, process.env.KEY_JWT, async(err, payload) => {
       if(err) {
-        res.json({message: "your token is not valid"})
+        res.json({
+          isLogged: false,
+          message: "your token is not valid"
+        })
       } else {
         const user = await Users.findOne({_id: payload.id}).select('-password');
         res.json(user)
@@ -85,7 +88,10 @@ getAllUsers = async (req, res) => {
   if(token) {
     jwt.verify(token, process.env.KEY_JWT, async(err, paylad) => {
       if(err) {
-        res.json({message: "your token is not valid"})
+        res.json({
+          isLogged: false,
+          message: "your token is not valid"
+        })
       } else {
         const users = await Users.find().select('-password').select('-_id');
         res.json(users)

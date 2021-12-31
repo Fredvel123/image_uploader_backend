@@ -7,7 +7,10 @@ const addNewImage = async (req, res) => {
   if(token) {
     jwt.verify(token, process.env.KEY_JWT, async(err, payload) => {
     if(err) {
-      res.json({message: "your token is not valid"})
+      res.json({
+        isLogged: false,
+        message: "your token is not valid"
+      })
     } else {
         const image = new Images(req.body);
         const newImage = await image.save();
@@ -30,7 +33,10 @@ const yourImages = (req, res) => {
   if(token) {
     jwt.verify(token, process.env.KEY_JWT, async(err, payload) => {
     if(err) {
-      res.json({message: "your token is not valid"})
+      res.json({
+        isLogged: false,
+        message: "your token is not valid"
+      })
     } else {
         const images = await Images.find({_id: payload.id});
         res.json(images)
@@ -49,7 +55,10 @@ const removeImageById = async (req, res) => {
   if(token) {
     jwt.verify(token, process.env.KEY_JWT, async(err, payload) => {
     if(err) {
-      res.json({message: "your token is not valid"})
+      res.json({
+        isLogged: false,
+        message: "your token is not valid"
+      })
     } else {
         const {id} = req.params;
         const images = await Images.findByIdAndDelete(id);
