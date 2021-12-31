@@ -38,7 +38,7 @@ const yourImages = (req, res) => {
         message: "your token is not valid"
       })
     } else {
-        const images = await Images.find({_id: payload.id});
+        const images = await Images.find({author: payload.id});
         if(images) {
           res.json(images);
         } else {
