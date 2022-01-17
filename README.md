@@ -7,5 +7,5 @@ https://devchallenges.io/challenges/O2iGT9yBd6xZBrOcVirx
 
 urls to Users 
 
-url + /api/users/signup ===> to sign up a new user (POST)
-url + /api/users/login ===> to sign up a new user (POST)
+url + /api/users/signup ====> to sign up a new user (POST)
+url + /api/users/login ====> to sign up a new user (POST)
