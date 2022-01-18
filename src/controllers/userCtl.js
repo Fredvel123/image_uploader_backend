@@ -2,10 +2,26 @@ const Users = require('../models/usersScheme');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken')
 const dotenv = require('dotenv').config();
+// cloudinary config
+const cloudinary = require('cloudinary').v2;
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_KEY,
+  api_secret: process.env.CLOUD_SECRET_KEY
+})
+// const fs = require('fs-extra');
+
 
 //  sign up user.
 const createNewUser = async (req, res) => {
-  const user = new Users(req.body);
+  const result = await cloudinary.uploader.upload(req.file.path);
+  const data = req.body;
+  const user = new Users({
+    name: data.name,
+    email: data.email,
+    password: data.password,
+    avatar: result.secure_url
+  });
   const emailRepeate = await Users.findOne({email: user.email});
   if(emailRepeate) {
     res.json({
@@ -59,50 +75,16 @@ const logInUser = async (req, res) => {
 
 
 // code to get your own user
-const getOwnUser = (req, res) => {
-  const token = req.headers['access-token'];
-  if(token) {
-    jwt.verify(token, process.env.KEY_JWT, async(err, payload) => {
-      if(err) {
-        res.json({
-          isLogged: false,
-          message: "your token is not valid"
-        })
-      } else {
-        const user = await Users.findOne({_id: payload.id}).select('-password');
-        res.json(user)
-      }
-    });
-  } else {
-    res.json({
-      isLogged: false,
-      message: "you don't have access here, you need a token"
-    })
-  }  
+const getOwnUser = async (req, res) => {
+  const user = await Users.findOne({ _id: req.userId }).select('-password');
+  res.json(user)
 }
 
 
 // other urls
-getAllUsers = async (req, res) => {
-  const token = req.headers['access-token'];
-  if(token) {
-    jwt.verify(token, process.env.KEY_JWT, async(err, paylad) => {
-      if(err) {
-        res.json({
-          isLogged: false,
-          message: "your token is not valid"
-        })
-      } else {
-        const users = await Users.find().select('-password').select('-_id');
-        res.json(users)
-      }
-    });
-  } else {
-    res.json({
-      status: 404,
-      message: "you don't have access here, you need a token"
-    })
-  } 
+const getAllUsers = async (req, res) => {
+  const users = await Users.find().select('-password').select('-_id');
+  res.json(users)
 }
 
 const getAllUserNoAuth = async (req, res) => {
@@ -118,31 +100,6 @@ const removeUserById = async (req, res) => {
   })
 } 
 
-// test to token
-const testToken = (req, res) => {
-  const _token = req.headers['access-token'];
-  if(_token) {
-    jwt.verify(_token, process.env.KEY_JWT, (err, payload) => {
-      if(err) {
-        res.json({
-          isLogged: false,
-          message: "your token is not valid"
-        })
-      } else {
-        res.json({
-          isLogged: true,
-          message: "your token is valid",
-          token: _token
-        })
-      }
-    })
-  } else {
-    res.json({
-      isLogged: false,
-      message: "your don't have access here, you need a token"
-    })
-  }
-}
 
 module.exports = {
   getAllUsers, 
@@ -151,5 +108,4 @@ module.exports = {
   removeUserById, 
   getOwnUser,
   getAllUserNoAuth,
-  testToken
 }

@@ -8,7 +8,8 @@ const imagesSchema = new Schema({
   author: {
     required: true,
     type: String,
-  }
+  },
+  public_id: String
 }, {
   versionKey: false,
   timestamps: true

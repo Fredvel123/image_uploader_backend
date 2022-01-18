@@ -9,3 +9,6 @@ urls to Users
 
 url + /api/users/signup ===> to sign up a new user (POST)
 url + /api/users/login ===> to sign up a new user (POST)
+
+
+link for the frontend https://imguploadapp.herokuapp.com/
